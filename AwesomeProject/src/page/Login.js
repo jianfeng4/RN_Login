@@ -3,9 +3,28 @@ import React, { useState } from 'react'
 
 import { NavBar, Input, ConfirmButton, Tips } from '../common/LoginComponent'
 
+import {LoginNet} from '../net/LoginNet'
+
 export default function Login({navigation}) {
     const [userName, setUserName] = useState('')
     const [passWord, setPassWord] = useState('')
+
+    const onLogin=()=>{
+        if (userName === '' || passWord === '') {
+            return;
+        }
+
+        // LoginNet(userName,passWord).then((res)=>{
+        //     console.log('登陆成功');
+
+        // }).catch(err=>{
+        //     console.log('登陆失败')
+        // })
+
+        // 直接跳过去吧
+        navigation.navigate('Popular')
+    }
+
     return (
         <SafeAreaView>
             <NavBar
@@ -26,7 +45,7 @@ export default function Login({navigation}) {
                     secure={true}
                     onChangeText={(text) => { setPassWord(text) }}
                 />
-                <ConfirmButton title="登录" onClick={() => { }} />
+                <ConfirmButton title="登录" onClick={() => {onLogin()}} />
                 <Tips msg='帮助' helpUrl='' />
             </View>
         </SafeAreaView>
