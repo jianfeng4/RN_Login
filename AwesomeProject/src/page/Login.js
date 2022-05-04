@@ -22,7 +22,7 @@ export default function Login({navigation}) {
         // })
 
         // 直接跳过去吧
-        navigation.navigate('Popular')
+        navigation.navigate('Home')
     }
 
     return (
